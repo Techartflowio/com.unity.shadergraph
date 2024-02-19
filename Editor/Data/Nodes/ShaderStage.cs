@@ -8,13 +8,15 @@ namespace UnityEditor.ShaderGraph
         None = 0,
         Vertex = 1 << 0,
         Fragment = 1 << 1,
+        Stencil = 1 << 2,
         All = Vertex | Fragment
     }
 
     enum ShaderStage
     {
         Vertex = 1 << 0,
-        Fragment = 1 << 1
+        Fragment = 1 << 1,
+        Stencil = 1 << 2,
     }
 
     static class ShaderStageExtensions
@@ -34,6 +36,9 @@ namespace UnityEditor.ShaderGraph
                     return true;
                 case ShaderStageCapability.Fragment:
                     stage = ShaderStage.Fragment;
+                    return true;
+                case ShaderStageCapability.Stencil:
+                    stage = ShaderStage.Stencil;
                     return true;
                 default:
                     stage = ShaderStage.Fragment;
